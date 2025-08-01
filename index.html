@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mainlords Stream Cricket Tournament</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1c1c3c 100%);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(90deg, #ffcc00 0%, #ff4500 100%);
+            color: #fff;
+            width: 100%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header h1 {
+            font-size: 4em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+        header h1 span {
+            color: #fff;
+        }
+        header p {
+            font-size: 1.5em;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .match {
+            font-weight: bold;
+            color: #fff;
+            background: #ff4500;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        .about {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #2a2a4a 0%, #3a3a6a 100%);
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            margin: 20px 0;
+            width: 80%;
+            animation: slideUp 1s ease-out 1s forwards;
+            opacity: 0;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .about h2 {
+            color: #ffcc00;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        .about p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .team-section {
+            text-align: center;
+            padding: 20px;
+            width: 80%;
+            margin: 20px 0;
+            animation: fadeInTeams 1s ease-in 2s forwards;
+            opacity: 0;
+        }
+        @keyframes fadeInTeams {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .team {
+            display: inline-block;
+            margin: 15px;
+            animation: bounceIn 1s ease-out;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        .team span, .team i {
+            display: inline-block;
+            font-size: 200px; /* Increased size for lucrative effect */
+            text-shadow: 0 0 10px #fff, 0 0 20px #ffcc00, 0 0 30px #ff4500; /* Glowing effect */
+            transition: transform 0.3s, text-shadow 0.3s;
+        }
+        .team span:hover, .team i:hover {
+            transform: rotate(15deg) scale(1.2);
+            text-shadow: 0 0 15px #fff, 0 0 30px #ffcc00, 0 0 40px #ff4500; /* Enhanced glow on hover */
+        }
+        .team p {
+            font-size: 1.3em;
+            color: #ffcc00;
+            margin: 10px 0;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 90%;
+            margin: 20px 0;
+            animation: slideInCategories 1s ease-out 3s forwards;
+            opacity: 0;
+        }
+        @keyframes slideInCategories {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        table {
+            width: 20%;
+            border-collapse: collapse;
+            background: linear-gradient(135deg, #3a3a6a 0%, #4a4a8a 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+        table:hover {
+            transform: scale(1.05);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 2px solid #666;
+        }
+        th {
+            background: linear-gradient(90deg, #ffcc00 0%, #ff9900 100%);
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.2em;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .event {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #2a2a4a 0%, #3a3a6a 100%);
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            margin: 20px 0;
+            width: 80%;
+            animation: slideUp 1s ease-out 4s forwards;
+            opacity: 0;
+        }
+        .countdown {
+            font-size: 1.8em;
+            color: #ffcc00;
+            margin-top: 15px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #0a0a1a;
+            width: 100%;
+            margin-top: auto;
+            font-size: 1.1em;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+            header p {
+                font-size: 1.2em;
+            }
+            .about, .event, .team-section {
+                width: 90%;
+            }
+            table {
+                width: 100%;
+                margin: 15px 0;
+            }
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .team span, .team i {
+                font-size: 150px; /* Adjusted for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MAINLORDS <span>STREAM</span></h1>
+        <p>Cricket Tournament 2025</p>
+        <p class="match">Match Live at 11:00 PM on Zoom</p>
+    </header>
+    <section class="about">
+        <h2>About Us</h2>
+        <p>Get ready for the ultimate cricket showdown with Mainlords Stream! On August 3, 2025, the Cricket Tournament ignites at Dr. Shah Alam Boys Hostel, CuMC, featuring epic battles between the fiercest teams. Tune in live on Zoom at 11:00 PM for a night of thrilling action, roaring crowds, and unforgettable moments!</p>
+    </section>
+    <section class="team-section">
+        <div class="team"><span>🐯</span><p>Tigers of Mahid</p></div>
+        <div class="team"><i class="fas fa-guitar" style="color: #00cc00;"></i><p>Gully Boys of Jafrey</p></div>
+        <div class="team"><i class="fas fa-briefcase" style="color: #cc00cc;"></i><p>Cartels of Mehedi</p></div>
+        <div class="team"><i class="fas fa-flag" style="color: #0066cc;"></i><p>Patriots of Sayem</p></div>
+    </section>
+    <div class="container">
+        <table>
+            <tr><th>Category A</th></tr>
+            <tr><td>Arish</td></tr><tr><td>Farhad</td></tr><tr><td>Shahadat</td></tr><tr><td>Kutub</td></tr><tr><td>Naimur</td></tr><tr><td>Tanvir Shuvo</td></tr><tr><td>Rakib Ahmed</td></tr><tr><td>Jamil</td></tr>
+        </table>
+        <table>
+            <tr><th>Category B</th></tr>
+            <tr><td>Jihad</td></tr><tr><td>Nazmul Sifat</td></tr><tr><td>Shah Jalal</td></tr><tr><td>Ifaz</td></tr><tr><td>GM Mahed Sabbir</td></tr><tr><td>Akib Hasan</td></tr><tr><td>Rounok</td></tr><tr><td>Siam</td></tr><tr><td>Zim</td></tr><tr><td>Emon</td></tr><tr><td>Shaon Bhowmik</td></tr><tr><td>Fakhrul Rahat</td></tr>
+        </table>
+        <table>
+            <tr><th>Category C</th></tr>
+            <tr><td>Asif Iqbal</td></tr><tr><td>Shahjalal Asif</td></tr><tr><td>Rahadul</td></tr><tr><td>Arif</td></tr><tr><td>Mehsin</td></tr><tr><td>Jahid</td></tr><tr><td>Rifat</td></tr>
+        </table>
+        <table>
+            <tr><th>Category D</th></tr>
+            <tr><td>Khirl Alom</td></tr><tr><td>Ehammed</td></tr><tr><td>Meraj</td></tr><tr><td>Mushfik</td></tr><tr><td>Asad</td></tr><tr><td>Shah Paran</td></tr><tr><td>Mahdi</td></tr><tr><td>P.Palit</td></tr><tr><td>Arnab</td></tr><tr><td>Remon</td></tr><tr><td>Sagor</td></tr><tr><td>Mushrat</td></tr><tr><td>Sajin</td></tr><tr><td>Tuhin</td></tr><tr><td>Tasnim</td></tr><tr><td>Mazhar</td></tr><tr><td>Arman</td></tr><tr><td>Irfan</td></tr>
+        </table>
+    </div>
+    <section class="event">
+        <h2>Event Details</h2>
+        <p>Match starts: <strong>11:00 PM, 3rd August 2025</strong></p>
+        <p>Join us live on Zoom: <a href="#">Zoom Link</a></p>
+        <p class="countdown" id="countdown">Time until match: Calculating...</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Mainlords Stream. All rights reserved.</p>
+    </footer>
+    <script>
+        function updateCountdown() {
+            const countDownDate = new Date("August 3, 2025 23:00:00 GMT+06:00").getTime();
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `Time until match: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "Match has started!";
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
